@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "263793207130",
+    "firebase_url": "https://nada-c55d3-default-rtdb.firebaseio.com",
+    "project_id": "nada-c55d3",
+    "storage_bucket": "nada-c55d3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:263793207130:android:09d9b00ee41b5038037563",
+        "android_client_info": {
+          "package_name": "host.exp.exponent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "263793207130-f6iftc9tlq5se3n5anr829rrmgr3i5ps.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMwSpA55fza73Fg6-Hf13S6q1jUVNPkWs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "263793207130-f6iftc9tlq5se3n5anr829rrmgr3i5ps.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "263793207130-9fc4c3f6qj85ohi7k0pukvcbnkt48m08.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.nada.nada"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
