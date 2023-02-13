@@ -1,13 +1,15 @@
-import { View, Text, Button } from 'react-native'
-import React from 'react'
-import { useNavigation } from '@react-navigation/native'
+import { View, Text, Button } from 'react-native';
+import React from 'react';
+import { useNavigation } from '@react-navigation/native';
+import auth from '../hooks/auth';
 
 const LoginScreen = () => {
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
+  const { signinWithGoogle } = auth();
   return (
     <View>
-      <Text>This is the LoginScreen</Text>
-      <Button title='SignUp' onPress={() =>  navigation.navigate('SignUp')} />
+      <Text>This is the Login Screen</Text>
+      <Button title='login' onPress={signinWithGoogle} />
     </View>
   )
 }
