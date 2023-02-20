@@ -1,38 +1,52 @@
-import { View, Text } from 'react-native'
-import React, { createContext, useContext } from 'react'
-// import * as Google from "expo-google-app-auth";
+import * as React from 'react';
+import * as WebBrowser from 'expo-web-browser';
+import { ResponseType } from 'expo-auth-session';
 import * as Google from 'expo-auth-session/providers/google';
+import { initializeApp } from 'firebase/app';
+import { getAuth, GoogleAuthProvider, signInWithCredential } from 'firebase/auth';
+import { Button } from 'react-native';
 
-const ContextAuth = createContext({});
+// Initialize Firebase
+initializeApp({
+    apiKey: "AIzaSyCoe72s9wAZoQLMDWXPtp61zccvRaOdovg",
+    authDomain: "nada-c55d3.firebaseapp.com",
+    databaseURL: "https://nada-c55d3-default-rtdb.firebaseio.com",
+    projectId: "nada-c55d3",
+    storageBucket: "nada-c55d3.appspot.com",
+    messagingSenderId: "263793207130",
+    appId: "1:263793207130:web:16fd622a0214db03037563",
+    measurementId: "G-DZWJTJEJHM"
+});
 
-const config = {
-  iosClientId: "263793207130-kmracnptuetpn304isemdef1etos6v9u.apps.googleusercontent.com",
-  // androidClientId: "263793207130-f6iftc9tlq5se3n5anr829rrmgr3i5ps.apps.googleusercontent.com",
-  scopes: ['profile', 'email'],
-  permissions: ["public_profile", "email", "gender", "location"],
-}
+WebBrowser.maybeCompleteAuthSession();
 
-export const AuthenticationProvider = ({ children }) => {
-  const signInWithGoogleAsync = async () => {
-    Google.useAuthRequest(config).then(async (logInResult) => {
-      if(logInResult.type === "success") {
-        //login
-      }
-    });
-  }
+export default function GoogleSignIn() {
 
+  const [request, response, promptAsync] = Google.useIdTokenAuthRequest(
+    {
+      androidClientId: "263793207130-msocdf6sal7l1d4seqkq61khhtk5oqt9.apps.googleusercontent.com",
+      iosClientId: "263793207130-reqapsjgtdh8465p86gef4boat9scqvv.apps.googleusercontent.com",
+      expoClientId: "263793207130-3hi3ev4qkmd3b7tjlugr0b53hapefd9k.apps.googleusercontent.com"
+    },
+  );
+
+  React.useEffect(() => {
+    if (response?.type === 'success') {
+      const { id_token } = response.params;
+      const auth = getAuth();
+      const credential = GoogleAuthProvider.credential(id_token);
+      signInWithCredential(auth, credential);
+    }
+  }, [response]);
 
   return (
-    <ContextAuth.Provider 
-    value={{
-        user: null,
-        signInWithGoogleAsync,
-    }}>
-        {children}
-    </ContextAuth.Provider>
-  )
+    <Button
+      disabled={!request}
+      title="Login"
+      onPress={() => {
+        promptAsync();
+      }}
+    />
+  );
 }
 
-export default function auth(){
-    return useContext(ContextAuth);
-}

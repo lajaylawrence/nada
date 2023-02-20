@@ -8,6 +8,8 @@ const HomeScreen = () => {
     <View>
       <Text>This is my stack navigatoir</Text>
       <Button title='Go to chat screen' onPress={() =>  navigation.navigate('Chat')} />
+      <Button title='Go to l screen' onPress={() =>  navigation.navigate('Login')} />
+      <Button title='Go to s screen' onPress={() =>  navigation.navigate('SignUp')} />
     </View>
   )
 }

@@ -6,30 +6,20 @@ import ChatScreen from './screens/ChatScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import LoginScreen from './screens/LoginScreen';
 import SignUpScreen from './screens/SignUpScreen';
-import auth from './hooks/auth';
 
 const Stack = createNativeStackNavigator(); 
 
 const StackNavigator = () => {
-    const { user } = auth();
-    if(user){
+
         return (
             <Stack.Navigator>
                 <Stack.Screen name="Home" component={HomeScreen} />
                 <Stack.Screen name="Chat" component={ChatScreen}/>
                 <Stack.Screen name="Profile" component={ProfileScreen} />
+                <Stack.Screen name="Login" component={LoginScreen} />
+                <Stack.Screen name="SignUp" component={SignUpScreen} />
             </Stack.Navigator>
           );
-
-    } else {
-        return (
-            <Stack.Navigator>
-            <Stack.Screen name="Login" component={LoginScreen} />
-            <Stack.Screen name="SignUp" component={SignUpScreen} />
-        </Stack.Navigator>
-        )
-    
-    }
   
 };
 
