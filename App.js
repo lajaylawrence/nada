@@ -1,12 +1,16 @@
 import { StyleSheet, Text, View } from 'react-native';
 import StackNavigator from './StackNavigation';
 import {NavigationContainer} from "@react-navigation/native"
+import { AuthProvider } from './hooks/useAuth';
 
 export default function App() {
   return (
     <NavigationContainer> 
-   
-      <StackNavigator /> 
+      <AuthProvider>
+         <StackNavigator /> 
+
+      </AuthProvider>
+       
 
     </NavigationContainer>
   

@@ -6,11 +6,12 @@ import ChatScreen from './screens/ChatScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import LoginScreen from './screens/LoginScreen';
 import SignUpScreen from './screens/SignUpScreen';
+import useAuth from './hooks/useAuth';
 
 const Stack = createNativeStackNavigator(); 
 
 const StackNavigator = () => {
-    const user = false;
+    const {user} = useAuth();
 
         return (
             <Stack.Navigator>
