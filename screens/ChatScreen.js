@@ -1,11 +1,13 @@
-import { View, Text } from 'react-native'
+import { View, Text, SafeAreaView } from 'react-native'
 import React from 'react'
+import Header from '../components/Header'
 
 const ChatScreen = () => {
   return (
-    <View>
+    <SafeAreaView>
+      <Header title="Chat"/>
       <Text>I am the chat screen</Text>
-    </View>
+    </SafeAreaView>
   )
 }
 
