@@ -1,4 +1,3 @@
-// expo install expo-web-browser expo-auth-session expo-random
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, View, Text, Image, Button } from 'react-native';
@@ -9,8 +8,7 @@ import useAuth from '../hooks/useAuth';
 
 const LoginScreen = () => {
   const navigation = useNavigation();
-  const {signInWithGoogle} = useAuth();
-  const {facebookSignIn} = useAuth();
+  const {signInWithGoogle, facebookSignIn} = useAuth();
   return (
     <View style={styles.container}>
       {signInWithGoogle()}
