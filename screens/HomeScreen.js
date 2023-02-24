@@ -67,11 +67,11 @@ const HomeScreen = () => {
   const {logout } = useAuth(); //He uses useAuth
   const swipeRef = useRef(null); //creating a reference
 
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShown: false,
-    })
-  }, [])
+  // useLayoutEffect(() => {
+  //   navigation.setOptions({
+  //     headerShown: false,
+  //   })
+  // }, [])
 
   return (
     <SafeAreaView style={{ flex: 1}}>
@@ -84,7 +84,7 @@ const HomeScreen = () => {
         </TouchableOpacity>
         
 
-        <TouchableOpacity onPress={alert}>
+        <TouchableOpacity onPress={() => navigation.navigate('Modal')}>
           <Feather name="filter" size={24} color="black" style={styles.image} /> 
          
           </TouchableOpacity>
