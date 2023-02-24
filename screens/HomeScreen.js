@@ -61,10 +61,17 @@ const alert = () => {
 }
 //End of alert button
 
+
 const HomeScreen = () => {
   const navigation = useNavigation();
   const {logout } = useAuth(); //He uses useAuth
   const swipeRef = useRef(null); //creating a reference
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: false,
+    })
+  }, [])
 
   return (
     <SafeAreaView style={{ flex: 1}}>
