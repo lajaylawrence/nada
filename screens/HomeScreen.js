@@ -164,7 +164,7 @@ const HomeScreen = () => {
             <AntDesign name="hearto" size={30} style={{backgroundColor:"white"}} />
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={alert}>
+          <TouchableOpacity onPress={() => navigation.navigate("Chat")}>
             <Ionicons name="ios-chatbox-ellipses-outline"  size={30} />
           </TouchableOpacity>
 
