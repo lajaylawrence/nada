@@ -38,7 +38,9 @@ export const AuthProvider = ({ children }) => {
     }
 
     function signInWithGoogle () {
-        setLoading(true);
+        useEffect(() => {
+            setLoading(true);
+        }, []);
         const [request, response, promptAsync] = Google.useIdTokenAuthRequest(
             {
               androidClientId: "263793207130-msocdf6sal7l1d4seqkq61khhtk5oqt9.apps.googleusercontent.com",
@@ -66,13 +68,16 @@ export const AuthProvider = ({ children }) => {
             <Text style={{textAlign: 'center', fontWeight: '600'}}
             onPress={() => {
               promptAsync();}}
-          >Sign in with google</Text>
+          >Sign in with Google</Text>
           );
         
     }
 
     function facebookSignIn() {
-        setLoading(true);
+        useEffect(() => {
+            setLoading(true);
+        }, []);
+        
         const [request, response, promptAsync] = Facebook.useAuthRequest({
           responseType: ResponseType.Token,
           clientId: '6168234213219457',
@@ -99,7 +104,7 @@ export const AuthProvider = ({ children }) => {
           <Text style={{textAlign: 'center', fontWeight: '600'}}
             onPress={() => {
               promptAsync();}}
-          >Sign in with Facebook</Text>
+          >   Sign in with Facebook</Text>
         );
         
       }
