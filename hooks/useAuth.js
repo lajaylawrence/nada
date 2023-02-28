@@ -68,7 +68,7 @@ export const AuthProvider = ({ children }) => {
             <Text style={{textAlign: 'center', fontWeight: '600'}}
             onPress={() => {
               promptAsync();}}
-          >  SIGN IN WITH GOOGLE</Text>
+          >Sign in with Google</Text>
           );
         
     }
@@ -104,7 +104,7 @@ export const AuthProvider = ({ children }) => {
           <Text style={{textAlign: 'center', fontWeight: '600'}}
             onPress={() => {
               promptAsync();}}
-          >Sign in with Facebook</Text>
+          >   Sign in with Facebook</Text>
         );
         
       }

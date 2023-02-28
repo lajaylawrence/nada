@@ -18,11 +18,11 @@ const LoginScreen = () => {
       >
         <Image style={styles.logo_image} source={require('../assets/images/nada_logo_login.png')}></Image>
         <TouchableOpacity style={[styles.customButton,   {bottom: "30%"}, {marginHorizontal: '5%'},{alignSelf: 'center'}]}>
-        <Image style={{position: 'absolute', bottom: '50%', right: "96%", }} source={require('../assets/images/gg_icon.png')}></Image>
+        <Image style={{position: 'absolute', bottom: '50%', right: "93%", }} source={require('../assets/images/gg_icon.png')}></Image>
          {signInWithGoogle()}
         </TouchableOpacity>
         <TouchableOpacity style={[styles.customButton,  {bottom: "22%"}, {marginHorizontal: '5%'},{alignSelf: 'center'}]}>
-          <Image style={{position: 'absolute', bottom: '-5%', right: "90%"}} source={require('../assets/images/fb1.png')}></Image>
+          <Image style={{position: 'absolute', bottom: '-5%', right: "89%"}} source={require('../assets/images/fb1.png')}></Image>
           {facebookSignIn()}
         </TouchableOpacity>
 
