@@ -15,7 +15,7 @@ const MatchedScreen = () => {
     </View>
 
     <Text style={{color:'blue', justifyContent:'center', marginTop: 5}}>
-      { userSwiped.displayName } liked you too !!
+      {/* userSwiped.displayName */} liked you too !!
     </Text>
 
     <View style={{flex:'row', }}>
