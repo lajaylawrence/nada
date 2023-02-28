@@ -242,7 +242,7 @@ const HomeScreen = () => {
 
               <View style={{padding:10, position: 'absolute', top: 380, left: 0,  justifyContent: 'center', alignItems: 'left', flex: 1, borderRadius: 12}}>  
                 <Text style={{ color:"white"}} > {card.displayName}, {card.age} </Text>
-                <Text style={{color:"white"}} > {card.job} </Text>
+                <Text style={{color:"white"}} > {card.location} </Text>
               </View>
             </View>
           </View>
@@ -279,7 +279,7 @@ const HomeScreen = () => {
 
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={alert}>
+          <TouchableOpacity onPress={() => navigation.navigate('Matches')}>
             <AntDesign name="hearto" size={30} style={{backgroundColor:"white"}} />
           </TouchableOpacity>
 
