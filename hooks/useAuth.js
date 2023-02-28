@@ -1,5 +1,5 @@
 import { View, Text, Button } from 'react-native'
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import * as WebBrowser from 'expo-web-browser';
 import { ResponseType } from 'expo-auth-session';
 import * as Google from 'expo-auth-session/providers/google';
@@ -63,13 +63,10 @@ export const AuthProvider = ({ children }) => {
           }, [response]);
 
           return (
-            <Button
-              disabled={!request}
-              title="Login"
-              onPress={() => {
-                promptAsync();
-              }}
-            />
+            <Text style={{textAlign: 'center', fontWeight: '600'}}
+            onPress={() => {
+              promptAsync();}}
+          >Sign in with google</Text>
           );
         
     }
@@ -99,25 +96,27 @@ export const AuthProvider = ({ children }) => {
         }, [response]);
       
         return (
-          <Button
-            disabled={!request}
-            title="Login with Facebook"
+          <Text style={{textAlign: 'center', fontWeight: '600'}}
             onPress={() => {
               promptAsync();}}
-          />
+          >Sign in with Facebook</Text>
         );
+        
       }
 
-
-  return (
-    <AuthContext.Provider value={{
+    const memoValue = useMemo(() => ({
         user,
         loading,
         error,
-        logout,
         signInWithGoogle,
         facebookSignIn,
-    }}>
+        logout,
+
+    }), [user, loading, error])
+
+
+  return (
+    <AuthContext.Provider value={memoValue}>
       {!loadingIntial && children}
     </AuthContext.Provider>
     
