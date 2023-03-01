@@ -32,7 +32,7 @@ const StackNavigator = () => {
                         <Stack.Screen name="Profile" component={ProfileScreen} />
                         <Stack.Screen name="MatchedList" component={MatchedListScreen} />
                     </Stack.Group>
-                    <Stack.Group screenOptions={{presentation: "modal"}}>
+                    <Stack.Group screenOptions={{presentation: "modal", style: { backgroundColor: '#000000' }}}>
                         <Stack.Screen name="Modal" component={ModalScreen} />
                         <Stack.Screen name="profileReveal" component={ProfileReveal} />
                     </Stack.Group>
