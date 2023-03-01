@@ -7,7 +7,7 @@ import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp } from 
 import { db } from '../firebase';
 import useAuth from '../hooks/useAuth';
 
-const Header = ({title, callEnabled, nadaMatch}) => {
+const Header = ({title, callEnabled, matchDetails}) => {
     const navigation = useNavigation();
   return (
     <View style={styles.container1}>
@@ -15,7 +15,7 @@ const Header = ({title, callEnabled, nadaMatch}) => {
           <TouchableOpacity onPress={() => navigation.goBack()} style={{padding:2}}>
             <Ionicons name="chevron-back-outline"  size={34} color="#FF5864"/>
           </TouchableOpacity>
-          <Text style={styles.text1}>{title}</Text>
+          <Text style={styles.text1} onPress={() => navigation.navigate('profileReveal',{matchDetails})} >{title}</Text>
         </View>
 
        

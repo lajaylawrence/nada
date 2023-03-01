@@ -2,7 +2,6 @@ import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
 
 const ReceiverMessage = ({message }) => {
-  console.log(message)
   return (
     <View style={styles.view1}>
 
