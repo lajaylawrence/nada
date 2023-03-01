@@ -1,6 +1,6 @@
 import { Foundation } from '@expo/vector-icons';
 import { useRoute } from '@react-navigation/core';
-import { addDoc, arrayUnion, collection, doc, FieldValue, Firestore, onSnapshot, orderBy, query, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore';
+import { addDoc, arrayUnion, collection, doc, FieldValue, Firestore, getDoc, onSnapshot, orderBy, query, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore';
 import React, { Component, useEffect, useState} from 'react'
 import { SafeAreaView, Text, TextInput, View, StyleSheet, Button, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, FlatList, TouchableOpacity } from 'react-native'
 import Header from '../components/Header'
@@ -27,16 +27,16 @@ const MessageScreen = () => {
             ...doc.data()
         }))
         )
-        ), [matchDetails, db]);
-
-    //     // loooooooo
-    // useEffect(() => onSnapshot(collection(db, 'matches', matchDetails.id, 'nadaMatchRequest'), 
-    //     snapshot => setNadaMatchRequestArray(snapshot.docs[0]?.data())
-    //  ),
-    //   [matchDetails,db]
-    //   );
-
-    //   console.log(nadaMatchRequestArray);
+        ), [matchDetails, db]);   
+        
+        // get nadamatch array
+    
+        useEffect(() => onSnapshot(doc(db, 'matches', matchDetails.id), snapshot => {
+            setNadaMatchRequestArray(snapshot.data().nadaMatchRequest)
+        }), [matchDetails, db]);
+        
+        console.log(matchDetails.id);
+        // getNadaMatchRequestArray();
 
     const sendMessage = () => {
         addDoc(collection(db, 'matches', matchDetails.id, 'messages'), {
@@ -54,22 +54,19 @@ const MessageScreen = () => {
             updateDoc(doc(db, 'matches', matchDetails.id), {
                 nadaMatchRequest: arrayUnion(user.uid),
             }).then(() => {
-              console.log("work")
+                getDoc(doc(db, 'matches', matchDetails.id)).then(snapshot => {
+                    setNadaMatchRequestArray(snapshot.data().nadaMatchRequest)
+                });
             }).catch(error => {
               alert(error.message);
             })
-         
-            onSnapshot.apply().
-        
-
-        setInput("");
     };
 
-
+console.log();
 
     return (
       <SafeAreaView style={styles.safearea}>
-        <Header title={getMatchedUserInfo(matchDetails?.users, user.uid).displayName} callEnabled nadaMatch/>
+        <Header title={getMatchedUserInfo(matchDetails?.users, user.uid).displayName} callEnabled matchDetails={matchDetails}/>
 
 
         <KeyboardAvoidingView
@@ -94,7 +91,22 @@ const MessageScreen = () => {
                 />
                 
             </TouchableWithoutFeedback>
-            <Text>efhen</Text>
+
+            {/* match notifications */}
+            {nadaMatchRequestArray?.length==1 && nadaMatchRequestArray.includes(user.uid) && (
+        <Text>you sent a a super match, {getMatchedUserInfo(matchDetails?.users, user.uid).displayName} hasnt liked you yet</Text>
+        
+        )}
+        {/*  */}
+        {nadaMatchRequestArray?.length==1 && nadaMatchRequestArray.includes(getMatchedUserInfo(matchDetails?.users, user.uid).id) && (
+        <Text>{getMatchedUserInfo(matchDetails?.users, user.uid).displayName} likes you and would love to see your smile</Text>
+        
+        )}
+        {/*  */}
+        {nadaMatchRequestArray?.length==2 && (
+        <Text>you lovebirds liked each other!</Text>
+        
+        )}
         
         
         <View style={styles.view1}>
