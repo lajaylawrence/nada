@@ -1,6 +1,7 @@
+import { useNavigation } from '@react-navigation/native'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
-import { TouchableOpacity, StyleSheet} from 'react-native'
+import { TouchableOpacity, StyleSheet, Image, View, Text} from 'react-native'
 import { db } from '../firebase'
 import useAuth from '../hooks/useAuth'
 import getMatchedUserInfo from '../lib/getMatchedUserInfo'
@@ -8,7 +9,7 @@ import getMatchedUserInfo from '../lib/getMatchedUserInfo'
 const ChatRow = ({ matchDetails }) => {
     const navigation = useNavigation();
     const { user } = useAuth();
-    const [MatchedUserInfo, setMatchedUserInfo] = useState(null);
+    const [matchedUserInfo, setMatchedUserInfo] = useState(null);
     const [lastMessage, setLastMessage] = useState("");
 
     useEffect(() => {
@@ -23,14 +24,13 @@ const ChatRow = ({ matchDetails }) => {
       );
 
 
-
   return (
     <TouchableOpacity  style={styles.touchop1} onPress={() => navigation.navigate('Message', {
         matchDetails
     })}>
         <Image 
            style = {styles.image1}
-           source={{uri: matchedUserInfo?.photoURL}}
+           source={{uri: matchedUserInfo?.profilePic}}
         />
 
         <View>
@@ -38,7 +38,7 @@ const ChatRow = ({ matchDetails }) => {
                 {matchedUserInfo?.displayName}
             </Text>
             <Text>
-                {lastMessage || "Hail up the catty fammo"}
+                {lastMessage || "Make the first move ;)"}
             </Text>
         </View>
     </TouchableOpacity>
@@ -47,24 +47,29 @@ const ChatRow = ({ matchDetails }) => {
 
 const styles = StyleSheet.create({
     image1 : {
-        borderRadius: "9999px",
-        marginRight: "1rem",
-        width: "4rem",
-        height: "4rem",
+        borderRadius: 12,
+        marginRight: 14,
+        marginLeft: 3,
+        marginBottom: 3,
+        marginTop: 3,
+        width: 65,
+        height: 65,
+        
     },
     touchop1: {
-        paddingTop: "0.75rem",
-        paddingBottom: "0.75rem",
-paddingLeft: "1.25rem",
-paddingRight: "1.25rem",
-marginTop: "0.25rem",
-marginBottom: "0.25rem",
-marginLeft: "0.75rem",
-marginRight: "0.75rem",
+        paddingTop: 5,
+        paddingBottom: 5,
+paddingLeft: 5,
+paddingRight: 5,
+marginTop: 3,
+marginBottom: 6,
+marginLeft: 10,
+marginRight: 10,
 backgroundColor: "#ffffff",
 flexDirection: "row",
 alignItems: "center",
-borderRadius: "0.5rem",
+borderRadius: 5,
+        
     
 shadowColor: "#000",
 shadowOffset: { width: 0, height: 1 },
@@ -73,8 +78,8 @@ shadowRadius: 1.41,
 elevation: 2,
 },
 text1: {
-    fontSize: "1.125rem",
-lineHeight: "1.75rem",
+    fontSize: 14,
+// lineHeight: 1,
 fontWeight: "600",
 }
 

@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/core';
-import { addDoc, collection, onSnapshot, orderBy, query } from 'firebase/firestore';
-import React, { Component, useState} from 'react'
+import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp } from 'firebase/firestore';
+import React, { Component, useEffect, useState} from 'react'
 import { SafeAreaView, Text, TextInput, View, StyleSheet, Button, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, FlatList } from 'react-native'
 import Header from '../components/Header'
 import ReceiverMessage from '../components/ReceiverMessage';
@@ -31,7 +31,7 @@ const MessageScreen = () => {
             timestamp: serverTimestamp(),
             userId: user.uid,
             displayName: user.displayName,
-            photoURL: matchDetails.users[user.uid].photoURL,
+            photoURL: matchDetails.users[user.uid].profilePic,
             message:input
         });
 
@@ -58,9 +58,9 @@ const MessageScreen = () => {
                     inverted={-1}
                     style={styles.flatlist1}
                     keyextractor={item => item.id}
-                    renderItem={({ item }) =>
-                        messages.userId === user.uid? (
-                            <SenderMessage key={messages.id} message={message} />
+                    renderItem={({ item: message }) =>
+                        message.userId === user.uid? (
+                            <SenderMessage key={message.id} message={message} />
                                 ) : (
                             <ReceiverMessage key={message.id} message={message} />
                             )}
@@ -89,30 +89,32 @@ const MessageScreen = () => {
 
   const styles = StyleSheet.create({
     input1: {
-        fontSize: "1.125rem",
-lineHeight: "1.75rem",
-height: "2.5rem",
+        fontSize: 14,
+        // lineHeight: "1.75rem",
+        // height: 5,
+        paddingLeft: 10,
     },
     view1: {
-        paddingTop: "0.5rem",
-paddingBottom: "0.5rem",
-paddingLeft: "1.25rem",
-paddingRight: "1.25rem",
-flexDirection: "row",
-justifyContent: "space-between",
-alignItems: "center",
-borderTopWidth: "1px",
-borderColor: "#E5E7EB",
-backgroundColor: "#ffffff",
+        // paddingTop: "0.5rem",
+        // paddingBottom: "0.5rem",
+        // paddingLeft: "1.25rem",
+        // paddingRight: "1.25rem",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        borderTopWidth: 3,
+        borderColor: "#E5E7EB",
+        backgroundColor: "#ffffff",
     },
     keyboard: {
         flex: "1 1 0%",
+        padding: 10,
     },
     safearea: {
         flex: "1 1 0%",
     },
     flatlist1: {
-        paddingLeft: "1rem",
+        paddingLeft: 16,
     }
 
    

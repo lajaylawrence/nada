@@ -15,26 +15,29 @@ const ChatList = () => {
     useEffect(
         () =>
         onSnapshot(
-            collection(db, 'matches'), 
-            where('usersMatched', 'array-conatins', user.uid)
+            query(
+            collection(db, "matches"), 
+            where("usersMatched", "array-contains", user.uid)
             ),
+            
             (snapshot) => 
             setMatches(
                 snapshot.docs.map((doc) => ({
                     id: doc.id,
                     ...doc.data(),
                 }))
-            ),
+            )
+    ),
         [user]
     );
-    
-    //TODO change to > 0
-  return matches.length == 0 ? (
+
+
+  return matches.length > 0 ? (
     <FlatList
         style={styles.flatlist1}
         data={matches}
         keyExtractor={item => item.id}
-        renderItem={({ item }) => <ChatRow matchdetails={item} />}
+        renderItem={({ item }) => <ChatRow matchDetails={item} />}
     />
     ) : (
      <View style={styles.container1}>
@@ -45,7 +48,7 @@ const ChatList = () => {
 
 const styles = StyleSheet.create({
     container1: {
-        padding: 20,
+        padding: 40,
         display: 'flex',
     },
     flatlist1: {
