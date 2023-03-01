@@ -93,6 +93,7 @@ const MessageScreen = () => {
         // lineHeight: "1.75rem",
         // height: 5,
         paddingLeft: 10,
+        maxWidth: "85%",
     },
     view1: {
         // paddingTop: "0.5rem",

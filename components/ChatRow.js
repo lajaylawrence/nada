@@ -10,20 +10,24 @@ const ChatRow = ({ matchDetails }) => {
     const navigation = useNavigation();
     const { user } = useAuth();
     const [matchedUserInfo, setMatchedUserInfo] = useState(null);
-    const [lastMessage, setLastMessage] = useState("");
+    var [lastMessage, setLastMessage] = useState("");
 
     useEffect(() => {
         setMatchedUserInfo(getMatchedUserInfo(matchDetails.users, user.uid))
      }, [matchDetails, user]);
 
 
-     useEffect(() => onSnapshot(query(collection(db,'matches', matchDetails.id, "messages"), orderBy('timestamp, "desc')
+     useEffect(() => onSnapshot(query(collection(db, 'matches', matchDetails.id, 'messages'), orderBy('timestamp', 'desc')
      ), snapshot => setLastMessage(snapshot.docs[0]?.data()?.message)
      ),
       [matchDetails,db]
       );
 
+      if (lastMessage.length > 15){
+        lastMessage = lastMessage.slice(0,30) + "..."
+      }
 
+     
   return (
     <TouchableOpacity  style={styles.touchop1} onPress={() => navigation.navigate('Message', {
         matchDetails
@@ -33,13 +37,15 @@ const ChatRow = ({ matchDetails }) => {
            source={{uri: matchedUserInfo?.profilePic}}
         />
 
-        <View>
+        <View >
             <Text style={styles.text1}>
                 {matchedUserInfo?.displayName}
             </Text>
-            <Text>
+            <View style={{flexDirection: 'row', flexWrap: 'wrap', position:'relative'}} >
+            <Text style={styles.text2}>
                 {lastMessage || "Make the first move ;)"}
             </Text>
+            </View>
         </View>
     </TouchableOpacity>
   )
@@ -81,6 +87,11 @@ text1: {
     fontSize: 14,
 // lineHeight: 1,
 fontWeight: "600",
+},
+text2: {
+    flexWrap: "wrap",
+    paddingRight: 5,
+    
 }
 
    
