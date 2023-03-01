@@ -137,7 +137,7 @@ const HomeScreen = () => {
         </TouchableOpacity>
         
 
-        <TouchableOpacity onPress={() => navigation.navigate('Modal')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Filter')}>
           <Feather name="filter" size={24} color="black" style={styles.image} /> 
          
           </TouchableOpacity>

@@ -1,4 +1,4 @@
-import { View, Text, Button } from 'react-native'
+import { View, Text, Button, TouchableOpacity } from 'react-native'
 import React, {useState} from 'react'
 import SelectBox from 'react-native-multi-selectbox'
 import { xorBy } from 'lodash'
@@ -79,6 +79,25 @@ const GENDER = [
   }
 ]
 
+const PREF = [
+  {
+    item: 'Hetereosexual',
+    id: 'HS',
+  },
+  {
+    item: 'Bisexual',
+    id: 'BS'
+  },
+  {
+    item: 'Gay',
+    id: 'GA',
+  },
+  {
+    item: 'Pansexual',
+    id: 'PS'
+  }
+]
+
 const AGE = [
   {
     item: '18-25',
@@ -113,7 +132,7 @@ const ProfileScreen = () => {
   return (
     <View style={{ margin: 30 }}>
       <View style={{ width: '100%', alignItems: 'center' }}>
-        <Text style={{ fontSize: 30, paddingBottom: 20 }}>Demos</Text>
+        <Text style={{ fontSize: 30, paddingBottom: 20 }}>Filter</Text>
       </View>
       <View style={{ height: 40 }} />
       <Text style={{ fontSize: 20, paddingBottom: 10 }}> Gender</Text>
@@ -130,7 +149,7 @@ const ProfileScreen = () => {
       <Text style={{ fontSize: 20, paddingBottom: 10 }}> Prefrences</Text>
       <SelectBox
         label="Select multiple"
-        options={GENDER}
+        options={PREF}
         selectedValues={selectedTeams}
         onMultiSelect={onMultiChange()}
         onTapClose={onMultiChange()}
@@ -158,7 +177,10 @@ const ProfileScreen = () => {
         isMulti
         />
         <View style={{flex: 1}}>
-        <Button title='Filter'></Button>
+        <TouchableOpacity style={{ position: 'absolute', bottom: -100, backgroundColor:"#AA3FEC", width:170, height: 50, justifyContent: 'center', borderRadius: 20 }} 
+      >
+        <Text style={{ textAlign:'center' }} > Apply Filter </Text>
+      </TouchableOpacity>
 
         </View>
         
@@ -177,3 +199,4 @@ const ProfileScreen = () => {
 }
 
 export default ProfileScreen
+
