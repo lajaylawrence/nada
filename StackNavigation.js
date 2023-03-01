@@ -31,6 +31,8 @@ const StackNavigator = () => {
                         <Stack.Screen name="Message" component={MessageScreen}/>
                         <Stack.Screen name="Profile" component={ProfileScreen} />
                         <Stack.Screen name="MatchedList" component={MatchedListScreen} />
+                    </Stack.Group>
+                    <Stack.Group screenOptions={{presentation: "modal"}}>
                         <Stack.Screen name="Modal" component={ModalScreen} />
                         <Stack.Screen name="profileReveal" component={ProfileReveal} />
                     </Stack.Group>
