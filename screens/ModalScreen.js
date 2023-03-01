@@ -10,8 +10,9 @@ const ModalScreen = () => {
     const { user } = useAuth();
     const navigation = useNavigation();
     const [bio, setBio] = useState(null);
-    const [job, setJob] = useState(null);
+    const [location, setLocation] = useState(null);
     const [age, setAge] = useState(null);
+    const [pic, setPic] = useState(null);
 
     const incompleteForm = !bio || ! job || !age || !(age > 17);
 
@@ -20,8 +21,9 @@ const ModalScreen = () => {
         id: user.uid,
         displayName: user.displayName,
         userBio: bio,
-        job: job,
+        location: location,
         age: age,
+        profilePic: pic,
         timestamp: serverTimestamp(),
       }).then(() => {
         navigation.navigate('Home')
@@ -40,7 +42,7 @@ const ModalScreen = () => {
       <Text style={{top: -100,fontWeight:"700",}}> Welcome { user.displayName } </Text>
 
       <Text style={{textAlign:'center', fontWeight:"700", padding:10, color:'red',}}>
-        Step 1: The profile pic
+        Step 1: Write your bio.
       </Text>
 
       <TextInput style={{paddingBottom:30}}
@@ -51,13 +53,13 @@ const ModalScreen = () => {
       />
 
       <Text style={{textAlign:'center', fontWeight:"700", padding:10, color:'red', }}>
-        Step 2: The Job
+        Step 2: The Location
       </Text>
 
       <TextInput style={{paddingBottom:30}}
-      value={job}
-      onChangeText={(text) => setJob(text)}
-        placeholder='Enter your occupation'
+      value={location}
+      onChangeText={(text) => setLocation(text)}
+        placeholder='Enter the city and state you live'
       />
 
       <Text style={{textAlign:'center', fontWeight:"700", padding:10, color:'red', }}>
@@ -71,6 +73,16 @@ const ModalScreen = () => {
         keyboardType='numeric'
         maxLength={2}
       />
+
+    <Text style={{textAlign:'center', fontWeight:"700", padding:10, color:'red',}}>
+      Step 4: Add your profile pic
+    </Text>
+
+    <TextInput style={{paddingBottom:30}}
+    value={pic}
+    onChangeText={(text) => setPic(text)}
+    placeholder='Add a link for your profile picture.'
+    />
 
       <TouchableOpacity style={{ position: 'absolute', bottom: -100, backgroundColor:"#AA3FEC", width:170, height: 50, justifyContent: 'center', borderRadius: 20, }} 
       disabled={incompleteForm}
