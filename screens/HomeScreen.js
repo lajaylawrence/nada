@@ -164,7 +164,7 @@ const HomeScreen = () => {
       }
         overlayLabels = {{
           left: {
-            title: "NIET",
+            title: "PASS",
             style: {
               label: {
                 textAlign: "right",
@@ -244,7 +244,7 @@ const HomeScreen = () => {
             <Ionicons name="ios-chatbox-ellipses-outline"  size={30} />
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Modal')}>
             <Octicons name="person" size={30}/>
           </TouchableOpacity>
       </View>

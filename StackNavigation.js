@@ -22,6 +22,7 @@ const StackNavigator = () => {
             <Stack.Navigator screenOptions={{
                 headerShown: false,
             }}>
+                { user.uid }
                 {user ? (
                 <>
                     <Stack.Group>
@@ -30,8 +31,6 @@ const StackNavigator = () => {
                         <Stack.Screen name="Message" component={MessageScreen}/>
                         <Stack.Screen name="Profile" component={ProfileScreen} />
                         <Stack.Screen name="MatchedList" component={MatchedListScreen} />
-                    </Stack.Group>
-                    <Stack.Group screenOptions={{presentation: "modal"}}>
                         <Stack.Screen name="Modal" component={ModalScreen} />
                     </Stack.Group>
                     <Stack.Group screenOptions={{presentation: 'transparentModal'}}>
