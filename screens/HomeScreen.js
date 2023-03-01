@@ -8,49 +8,7 @@ import Swiper from "react-native-deck-swiper"
 import { useFonts } from 'expo-font';
 import { collection, doc, DocumentSnapshot, getDoc, getDocs, onSnapshot, query, serverTimestamp, setDoc, where } from 'firebase/firestore';
 import { db } from '../firebase'
-import ScalableText from 'react-native-text'
-import generateID from '../lib/generateID';
-
-// const DUMMY_TEXT = `Lorem ipsum dolor sit amet, 
-// consectetur adipiscing elit, 
-// sed do eiusmod tempor incididunt 
-// ut labore et dolore magna aliqua.
-// Ut enim ad minim veniam,
-// quis nostrud exercitation ullamco
-// laboris nisi ut aliquip ex ea commodo
-// consequat. Duis aute irure dolor in reprehenderit
-// in voluptate velit esse cillum dolore eu fugiat 
-// nulla pariatur. Excepteur sint occaecat cupidatat 
-// non proident, sunt in culpa qui officia 
-// deserunt mollit anim id est laborum.`
-
-// const DUMMY_DATA = [
-//   {
-//     firstName: "Dacha",
-//     lastName: "Anderson",
-//     distance: "5 miles",
-//     photoURL: require("../assets/images/bckgrnd_col1.png"), //Needs to be user info not image
-//     age: 18,
-//     id: 123,
-//   },
-//   {
-//     firstName: "Lloyd",
-//     lastName: "Baugh",
-//     distance: "9 miles",
-//     photoURL: require("../assets/images/bckgrnd_col2.png"),
-//     age: 23,
-//     id: 124,
-//   },
-//   {
-//     firstName: "Jason",
-//     lastName: "Jackson",
-//     distance: "10 miles",
-//     photoURL: require("../assets/images/bckgrnd_col1.png"),
-//     age: 20,
-//     id: 125,
-//   },
-
-// ]
+import generateMatchID from '../lib/generateMatchID';
 
 //Creating an alert button for testing purposes
 const alert = () => {
@@ -118,7 +76,6 @@ const HomeScreen = () => {
     }
 
     const userSwiped = profiles[cardIndex];
-    console.log(`You swiped PASS on ${userSwiped.displayName}`);
     setDoc(doc(db, 'users', user.uid, 'passes', userSwiped.id), userSwiped);
 
   };
@@ -139,14 +96,13 @@ const HomeScreen = () => {
     getDoc(doc(db, 'users', userSwiped.id, 'swipes', user.uid)).then(
       (documentSnapshot) => {
         if(documentSnapshot.exists()){
-          //user match with u before u do
+
           //create a match
-          console.log('You match with someone else')
           setDoc(doc(db, 'users', user.uid, 'swipes', userSwiped.id),
           userSwiped); //record the swipe
-
+          
           //CREATING MATCHES
-          setDoc(doc(db, 'matches', generateID(user.uid, userSwiped.id)), {
+          setDoc(doc(db, 'matches', generateMatchID(user.uid, userSwiped.id)), {
             users: {
               [user.uid]: loggedInProfile,
               [userSwiped.id]: userSwiped
@@ -160,7 +116,6 @@ const HomeScreen = () => {
           });
           
         }else{
-          console.log(`You swiped right on ${userSwiped.displayName}`);
           setDoc(doc(db, 'users', user.uid, 'swipes', userSwiped.id), userSwiped);
           
         }
@@ -201,17 +156,15 @@ const HomeScreen = () => {
         animateCardOpacity
         verticalSwipe={false}
         onSwipedLeft={(cardIndex) => {
-          console.log("Swipe PASS");
           swipeLeft(cardIndex)}
        }
         onSwipedRight={(cardIndex) => {
-          console.log("Swipe MATCH");
           swipeRight(cardIndex)
         }
       }
         overlayLabels = {{
           left: {
-            title: "NOPE",
+            title: "NIET",
             style: {
               label: {
                 textAlign: "right",
@@ -234,8 +187,8 @@ const HomeScreen = () => {
             <ImageBackground style= {{ flex: 1 }} source={ require("../assets/images/bckgrnd_col1.png") } imageStyle={{ borderRadius: 15 }} />
             {/* <Text> This is some text that is to be added for the user bio </Text> */}
             <View style={{position: "absolute", alignContent: "center", alignItems: "center", top: 50}}>
-              <View style={{position: "absolute", height: 300, alignItems: "center", left: 30,}}>
-                <Text> 
+              <View style={{position: "relative", height: 300, alignItems: "center", left:0,flexDirection:'row'}}>
+                <Text style={{flexWrap:'wrap', padding: 10}}> 
                   { card.userBio}
                 </Text>
               </View>
@@ -245,6 +198,10 @@ const HomeScreen = () => {
                 <Text style={{color:"white"}} > {card.location} </Text>
               </View>
             </View>
+
+            {/* <View style={{position:"absolute", justifyContent:'space-evenly', top: 610, flexDirection: "row", alignItems: 'center' }}>
+
+            </View> */}
           </View>
          ) : (
             <View style={{height: 500, position:'relative', backgroundColor:'white', justifyContent:'center', alignItems:'center', borderRadius: 12,}}>
@@ -258,7 +215,7 @@ const HomeScreen = () => {
       </View>
       {/* End of Cards */}
 
-      {/* Swipe Buttons */}
+      {/* Like and Dislike Buttons */}
       <View style={{position:"relative", justifyContent:'space-evenly', top: 610, flexDirection: "row", alignItems: 'center'}}>
         <TouchableOpacity onPress={() => swipeRef.current.swipeLeft()} style={{backgroundColor:"red", borderRadius:65, width:60, height:60, alignItems:"center", justifyContent:"center"}}>
           <Entypo name="cross" size={30} style={{color:"white"}}/>
@@ -270,7 +227,7 @@ const HomeScreen = () => {
         <AntDesign name="heart" size={22} style={{color:"white"}}/>
         </TouchableOpacity>
       </View>
-      {/* End of Swipe Buttons */}
+      {/* End of Like and Dislike Buttons */}
 
       {/* Navbar */}
       <View style={{alignItems:"center",position:"relative", justifyContent:"space-evenly", backgroundColor:"white", top: 630, height:80, borderRadius:30, flexDirection:"row"}}>
@@ -279,7 +236,7 @@ const HomeScreen = () => {
 
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigation.navigate('Matches')}>
+          <TouchableOpacity onPress={() => navigation.navigate('MatchedList')}>
             <AntDesign name="hearto" size={30} style={{backgroundColor:"white"}} />
           </TouchableOpacity>
 
@@ -287,7 +244,7 @@ const HomeScreen = () => {
             <Ionicons name="ios-chatbox-ellipses-outline"  size={30} />
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={alert}>
+          <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
             <Octicons name="person" size={30}/>
           </TouchableOpacity>
       </View>

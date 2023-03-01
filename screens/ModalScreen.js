@@ -14,7 +14,7 @@ const ModalScreen = () => {
     const [age, setAge] = useState(null);
     const [pic, setPic] = useState(null);
 
-    const incompleteForm = !bio || ! job || !age || !(age > 17);
+    const incompleteForm = !bio || ! location || !age || !(age > 17);
 
     const updateUserProfile = () => {
       setDoc(doc(db, 'users', user.uid), {
@@ -48,8 +48,8 @@ const ModalScreen = () => {
       <TextInput style={{paddingBottom:30}}
       value={bio}
       onChangeText={(text) => setBio(text)}
-      placeholder='Enter a short bio. Must be 100 characters or less' //Will determine the number of characters later
-      maxLength={100}
+      placeholder='Enter a short bio. Must be 800 characters or less' //Will determine the number of characters later
+      maxLength={800}
       />
 
       <Text style={{textAlign:'center', fontWeight:"700", padding:10, color:'red', }}>

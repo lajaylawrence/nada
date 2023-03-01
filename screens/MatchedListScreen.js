@@ -1,14 +1,12 @@
 import { View, Text, SafeAreaView, StyleSheet} from 'react-native'
 import React from 'react'
 import Header from '../components/Header'
-import ChatList from '../components/ChatList'
 
-const ChatScreen = () => {
+
+const MatchedListScreen = () => {
   return (
     <SafeAreaView>
-      <Header title="Chat" />
-     
-      <ChatList />
+      <Header title="Matches" />
     </SafeAreaView>
   )
 }
@@ -23,4 +21,4 @@ const styles = StyleSheet.create({
   
 });
 
-export default ChatScreen
+export default MatchedListScreen
