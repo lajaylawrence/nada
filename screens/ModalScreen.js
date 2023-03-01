@@ -2,7 +2,7 @@ import { View, Text, SafeAreaView, Image, TextInput, TouchableOpacity, } from 'r
 import React , { useLayoutEffect, useState } from 'react'
 import useAuth from '../hooks/useAuth'
 import StyleSheet from 'react-native-extended-stylesheet'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import { serverTimestamp, setDoc, doc } from 'firebase/firestore'
 import { db } from '../firebase'
 
@@ -13,7 +13,7 @@ const ModalScreen = () => {
     const [location, setLocation] = useState(null);
     const [age, setAge] = useState(null);
     const [pic, setPic] = useState(null);
-
+    
     const incompleteForm = !bio || ! location || !age || !(age > 17);
 
     const updateUserProfile = () => {
@@ -34,15 +34,15 @@ const ModalScreen = () => {
 
   return (
     <View  style={{ alignItems: 'center'}}>
-      <Image style={{height:200, width:"100%", backgroundColor:"transparent", top:-20}} 
+      <Image style={{height:200, width:"100%", backgroundColor:"transparent", top:-10}} 
       source={require('../assets/images/nada_logo.png')}
       resizeMode="contain"
       />
 
-      <Text style={{top: -100,fontWeight:"700",}}> Welcome { user.displayName } </Text>
+      <Text style={{top: -70,fontWeight:"700",}}> Welcome { user.displayName } </Text>
 
       <Text style={{textAlign:'center', fontWeight:"700", padding:10, color:'red',}}>
-        Step 1: Write your bio.
+        Biography
       </Text>
 
       <TextInput style={{paddingBottom:30}}
@@ -53,7 +53,7 @@ const ModalScreen = () => {
       />
 
       <Text style={{textAlign:'center', fontWeight:"700", padding:10, color:'red', }}>
-        Step 2: The Location
+        Location
       </Text>
 
       <TextInput style={{paddingBottom:30}}
@@ -63,7 +63,7 @@ const ModalScreen = () => {
       />
 
       <Text style={{textAlign:'center', fontWeight:"700", padding:10, color:'red', }}>
-        Step 3: The Age
+       Age
       </Text>
 
       <TextInput style={{paddingBottom:30}}
@@ -75,8 +75,10 @@ const ModalScreen = () => {
       />
 
     <Text style={{textAlign:'center', fontWeight:"700", padding:10, color:'red',}}>
-      Step 4: Add your profile pic
+      Profile Picture
     </Text>
+
+
 
     <TextInput style={{paddingBottom:30}}
     value={pic}
