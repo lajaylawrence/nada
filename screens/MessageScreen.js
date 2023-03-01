@@ -1,7 +1,8 @@
+import { Foundation } from '@expo/vector-icons';
 import { useRoute } from '@react-navigation/core';
-import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp } from 'firebase/firestore';
+import { addDoc, arrayUnion, collection, doc, FieldValue, Firestore, onSnapshot, orderBy, query, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore';
 import React, { Component, useEffect, useState} from 'react'
-import { SafeAreaView, Text, TextInput, View, StyleSheet, Button, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, FlatList } from 'react-native'
+import { SafeAreaView, Text, TextInput, View, StyleSheet, Button, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, FlatList, TouchableOpacity } from 'react-native'
 import Header from '../components/Header'
 import ReceiverMessage from '../components/ReceiverMessage';
 import SenderMessage from '../components/SenderMessage';
@@ -16,6 +17,7 @@ const MessageScreen = () => {
     const [messages, setMessages] = useState([]);
 
     const { matchDetails } = params;
+    const { nadaMatch } = true;
 
     useEffect(() => onSnapshot(query(collection(db, 'matches', matchDetails.id, 'messages'), orderBy('timestamp', 'desc')
         
@@ -38,11 +40,25 @@ const MessageScreen = () => {
         setInput("");
     };
 
+    const nadaMatchRequest = () => {
+            updateDoc(doc(db, 'matches', matchDetails.id), {
+                nadaMatchRequest: arrayUnion(user.uid),
+            }).then(() => {
+              console.log("work")
+            }).catch(error => {
+              alert(error.message);
+            })
+         
+        
+
+        setInput("");
+    };
+
 
 
     return (
       <SafeAreaView style={styles.safearea}>
-        <Header title={getMatchedUserInfo(matchDetails?.users, user.uid).displayName} callEnabled />
+        <Header title={getMatchedUserInfo(matchDetails?.users, user.uid).displayName} callEnabled nadaMatch/>
 
 
         <KeyboardAvoidingView
@@ -78,6 +94,20 @@ const MessageScreen = () => {
                 onSubmitEditing={sendMessage}
                 value={input}
             />
+
+        {true && (
+        <TouchableOpacity onPress={nadaMatchRequest} style={styles.touchopacity2}>
+            <Foundation name="photo"  size={20} color="#FF5864" style={{width:27, paddingLeft:5}}/>
+        </TouchableOpacity>
+        
+        )}
+
+        {false && (
+        <TouchableOpacity onPress={nadaMatchRequest} style={styles.touchopacity2}>
+            <Foundation name="photo"  size={20} color="#FF5864" style={{width:27, paddingLeft:5}}/>
+        </TouchableOpacity>
+        
+        )}
             <Button onPress={sendMessage} title='Send' color="#FF5864" />
         </View>
         </KeyboardAvoidingView>
@@ -93,7 +123,8 @@ const MessageScreen = () => {
         // lineHeight: "1.75rem",
         // height: 5,
         paddingLeft: 10,
-        maxWidth: "85%",
+        maxWidth: "70%",
+        minWidth: "70%",
     },
     view1: {
         // paddingTop: "0.5rem",
@@ -116,6 +147,14 @@ const MessageScreen = () => {
     },
     flatlist1: {
         paddingLeft: 16,
+    },
+    touchopacity2: {
+        padding: 3,
+        // marginRight: 4,
+        right: -5,
+        backgroundColor: "#FECACA",
+        borderRadius: "9999px",
+        justifyContent: "center",
     }
 
    

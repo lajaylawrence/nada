@@ -3,8 +3,11 @@ import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-na
 import {Foundation } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/core';
+import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp } from 'firebase/firestore';
+import { db } from '../firebase';
+import useAuth from '../hooks/useAuth';
 
-const Header = ({title, callEnabled}) => {
+const Header = ({title, callEnabled, nadaMatch}) => {
     const navigation = useNavigation();
   return (
     <View style={styles.container1}>
@@ -14,6 +17,8 @@ const Header = ({title, callEnabled}) => {
           </TouchableOpacity>
           <Text style={styles.text1}>{title}</Text>
         </View>
+
+       
         
         {callEnabled && (
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.touchopacity2}>

@@ -2,17 +2,22 @@ import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
 
 const ReceiverMessage = ({message }) => {
+  console.log(message)
   return (
     <View style={styles.view1}>
 
         <Image 
           style={styles.image}
+          source={{uri: message.photoURL}}
         />
         <Text style={styles.text1}> {message.message}</Text>
 
     </View>
   )
+
+  
 }
+
 
 
 const styles = StyleSheet.create({
@@ -23,24 +28,24 @@ const styles = StyleSheet.create({
       paddingRight: 12,
       marginTop: 5,
       marginBottom: 5,
-      marginLeft: 5,
+      marginLeft: 30,
       marginRight: 5,
         backgroundColor: "#0d6625",
         borderRadius: 10,
         borderTopLeftRadius: 0,
         alignSelf: "flex-start", 
-        marginLeft: 0,
     },
     text1:{
         color: "white",
     },
     image:{
       position: "absolute",
-      top: 0,
-      // left: 1,
-      width: 10,
-      height: 10,
-      borderRadius: "9999px",      
+      top: -15,
+      left: -55,
+      width: 40,
+      height: 40,
+      borderRadius: 2,    
+      margin: 10,  
     }
    
 })
