@@ -15,6 +15,7 @@ const MessageScreen = () => {
     const {params} = useRoute();
     const [input, setInput] = useState('');
     const [messages, setMessages] = useState([]);
+    const [nadaMatchRequestArray, setNadaMatchRequestArray] = useState([]);
 
     const { matchDetails } = params;
     const { nadaMatch } = true;
@@ -27,6 +28,15 @@ const MessageScreen = () => {
         }))
         )
         ), [matchDetails, db]);
+
+    //     // loooooooo
+    // useEffect(() => onSnapshot(collection(db, 'matches', matchDetails.id, 'nadaMatchRequest'), 
+    //     snapshot => setNadaMatchRequestArray(snapshot.docs[0]?.data())
+    //  ),
+    //   [matchDetails,db]
+    //   );
+
+    //   console.log(nadaMatchRequestArray);
 
     const sendMessage = () => {
         addDoc(collection(db, 'matches', matchDetails.id, 'messages'), {
@@ -49,6 +59,7 @@ const MessageScreen = () => {
               alert(error.message);
             })
          
+            onSnapshot.apply().
         
 
         setInput("");
@@ -81,9 +92,9 @@ const MessageScreen = () => {
                             <ReceiverMessage key={message.id} message={message} />
                             )}
                 />
-
+                
             </TouchableWithoutFeedback>
-            
+            <Text>efhen</Text>
         
         
         <View style={styles.view1}>

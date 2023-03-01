@@ -23,11 +23,12 @@ const ChatRow = ({ matchDetails }) => {
       [matchDetails,db]
       );
 
-      if (lastMessage.length > 15){
+      if (lastMessage?.length > 15){
         lastMessage = lastMessage.slice(0,30) + "..."
       }
 
      
+
   return (
     <TouchableOpacity  style={styles.touchop1} onPress={() => navigation.navigate('Message', {
         matchDetails
