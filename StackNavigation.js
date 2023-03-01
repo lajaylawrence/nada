@@ -23,7 +23,6 @@ const StackNavigator = () => {
             <Stack.Navigator screenOptions={{
                 headerShown: false,
             }}>
-                { user.uid }
                 {user ? (
                 <>
                     <Stack.Group>
