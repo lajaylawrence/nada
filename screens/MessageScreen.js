@@ -91,17 +91,17 @@ console.log();
 
             {/* match notifications */}
             {nadaMatchRequestArray?.length==1 && nadaMatchRequestArray.includes(user.uid) && (
-        <Text>you sent a a super match, {getMatchedUserInfo(matchDetails?.users, user.uid).displayName} hasnt liked you yet</Text>
+        <Text style={styles.notification}> You sent a supermatch! , {getMatchedUserInfo(matchDetails?.users, user.uid).displayName} hasn't you one yet</Text>
         
         )}
         {/*  */}
         {nadaMatchRequestArray?.length==1 && nadaMatchRequestArray.includes(getMatchedUserInfo(matchDetails?.users, user.uid).id) && (
-        <Text>{getMatchedUserInfo(matchDetails?.users, user.uid).displayName} likes you and would love to see your smile</Text>
+        <Text style={styles.notification}>{getMatchedUserInfo(matchDetails?.users, user.uid).displayName} sent you a supermatch, send one back to see her profile!</Text>
         
         )}
         {/*  */}
         {nadaMatchRequestArray?.length==2 && (
-        <Text>you lovebirds liked each other!</Text>
+        <Text style={styles.notification}> You lovebirds supermatched each other! you can now see their profile </Text>
         
         )}
         
@@ -117,7 +117,7 @@ console.log();
 
         {true && (
         <TouchableOpacity onPress={nadaMatchRequest} style={styles.touchopacity2}>
-            <Foundation name="photo"  size={20} color="#FF5864" style={{width:27, paddingLeft:5}}/>
+            <Foundation name="photo"  size={25} color="#008c9e" style={{width:27, paddingLeft:5}}/>
         </TouchableOpacity>
         
         )}
@@ -128,7 +128,7 @@ console.log();
         </TouchableOpacity>
         
         )}
-            <Button onPress={sendMessage} title='Send' color="#FF5864" />
+            <Button onPress={sendMessage} title='Send' color="#008c9e" />
         </View>
         </KeyboardAvoidingView>
         
@@ -140,8 +140,9 @@ console.log();
   const styles = StyleSheet.create({
     input1: {
         fontSize: 14,
-        // lineHeight: "1.75rem",
-        // height: 5,
+        lineHeight: 15,
+        margin: 2,
+        height: 45,
         paddingLeft: 10,
         maxWidth: "70%",
         minWidth: "70%",
@@ -157,6 +158,8 @@ console.log();
         borderTopWidth: 3,
         borderColor: "#E5E7EB",
         backgroundColor: "#ffffff",
+        borderRadius: 30,
+        height: 50,
     },
     keyboard: {
         flex: "1 1 0%",
@@ -172,9 +175,16 @@ console.log();
         padding: 3,
         // marginRight: 4,
         right: -5,
-        backgroundColor: "#FECACA",
+        backgroundColor: "white",
         borderRadius: "9999px",
         justifyContent: "center",
+    },
+    notification: {
+        alignSelf: "center",
+        color: '#7b5a91',
+        opacity: 0.5,
+        margin: 10,
+        textAlign: "center",
     }
 
    

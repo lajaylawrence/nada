@@ -13,7 +13,7 @@ const Header = ({title, callEnabled, matchDetails}) => {
     <View style={styles.container1}>
         <View style={styles.container2}>
           <TouchableOpacity onPress={() => navigation.goBack()} style={{padding:2}}>
-            <Ionicons name="chevron-back-outline"  size={34} color="#FF5864"/>
+            <Ionicons name="chevron-back-outline"  size={34} color="#ffb836"/>
           </TouchableOpacity>
           <Text style={styles.text1} onPress={() => navigation.navigate('profileReveal',{matchDetails})} >{title}</Text>
         </View>
@@ -21,8 +21,8 @@ const Header = ({title, callEnabled, matchDetails}) => {
        
         
         {callEnabled && (
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.touchopacity2}>
-            <Foundation name="telephone"  size={30} color="#FF5864" style={{width:30, paddingLeft:5}}/>
+        <TouchableOpacity onPress={() => navigation.navigate('profileReveal',{matchDetails})} style={styles.touchopacity2}>
+            <Foundation name="eye"  size={30} color="#d61c2b" style={{width:30, paddingLeft:5}}/>
         </TouchableOpacity>
         
         )}
@@ -36,6 +36,9 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         justifyContent:'space-between',
         alignItems: 'center',
+        borderBottomWidth: 1,
+        borderColor: "#E5E7EB",
+        paddingBottom: 5,
     },
     container2: {
         display: "flex",
@@ -45,12 +48,15 @@ const styles = StyleSheet.create({
     text1: {
         fontWeight: "700",
         fontSize: 18,
+        color: "#e09304",
+        opacity: 0.8,
+        
     },
     touchopacity2: {
         padding: 3,
         marginRight: 4,
         right: 0,
-        backgroundColor: "#FECACA",
+        backgroundColor: "#ffc9e2",
         borderRadius: "9999px",
         justifyContent: "center",
     }

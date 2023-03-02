@@ -1,28 +1,28 @@
 Arguments: 
-  /Users/ashaniquem/.nvm/versions/node/v19.2.0/bin/node /Users/ashaniquem/.nvm/versions/node/v19.2.0/bin/yarn add @react-native-community/async-storage
+  /Users/prince/.nvm/versions/node/v19.1.0/bin/node /Users/prince/.nvm/versions/node/v19.1.0/bin/yarnpkg add expo-linear-gradient@~12.0.1
 
 PATH: 
-  /Users/ashaniquem/.nvm/versions/node/v19.2.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/ashaniquem/Desktop/Nada-techwise/flutter/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/ashaniquem/opt/anaconda3/bin:/Users/ashaniquem/opt/anaconda3/condabin:/Users/ashaniquem/.nvm/versions/node/v19.2.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin
+  /Users/prince/Desktop/NADA/nada/node_modules/.bin:/Users/prince/Desktop/NADA/nada/node_modules/.bin:/Users/prince/Desktop/NADA/node_modules/.bin:/Users/prince/Desktop/node_modules/.bin:/Users/prince/node_modules/.bin:/Users/node_modules/.bin:/node_modules/.bin:/Users/prince/.nvm/versions/node/v19.1.0/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/Users/prince/.nvm/versions/node/v19.1.0/bin:/Users/prince/.nvm/versions/node/v19.1.0/bin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/prince/.nvm/versions/node/v19.1.0/bin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.9/bin
 
 Yarn version: 
   1.22.19
 
 Node version: 
-  19.2.0
+  19.1.0
 
 Platform: 
   darwin arm64
 
 Trace: 
-  SyntaxError: Unknown token: { line: 3448, col: 2, type: 'INVALID', value: undefined } 3448:2 in /Users/ashaniquem/Desktop/tech_prj_nada/nada/yarn.lock
-      at Parser.unexpected (/Users/ashaniquem/.nvm/versions/node/v19.2.0/lib/node_modules/yarn/lib/cli.js:63491:11)
-      at Parser.parse (/Users/ashaniquem/.nvm/versions/node/v19.2.0/lib/node_modules/yarn/lib/cli.js:63622:14)
-      at parse (/Users/ashaniquem/.nvm/versions/node/v19.2.0/lib/node_modules/yarn/lib/cli.js:63696:21)
-      at module.exports.exports.default (/Users/ashaniquem/.nvm/versions/node/v19.2.0/lib/node_modules/yarn/lib/cli.js:63258:96)
-      at Function.<anonymous> (/Users/ashaniquem/.nvm/versions/node/v19.2.0/lib/node_modules/yarn/lib/cli.js:3068:63)
+  SyntaxError: Unknown token: { line: 3448, col: 2, type: 'INVALID', value: undefined } 3448:2 in /Users/prince/Desktop/NADA/nada/yarn.lock
+      at Parser.unexpected (/Users/prince/.nvm/versions/node/v19.1.0/lib/node_modules/yarn/lib/cli.js:63491:11)
+      at Parser.parse (/Users/prince/.nvm/versions/node/v19.1.0/lib/node_modules/yarn/lib/cli.js:63622:14)
+      at parse (/Users/prince/.nvm/versions/node/v19.1.0/lib/node_modules/yarn/lib/cli.js:63696:21)
+      at module.exports.exports.default (/Users/prince/.nvm/versions/node/v19.1.0/lib/node_modules/yarn/lib/cli.js:63258:96)
+      at Function.<anonymous> (/Users/prince/.nvm/versions/node/v19.1.0/lib/node_modules/yarn/lib/cli.js:3068:63)
       at Generator.next (<anonymous>)
-      at step (/Users/ashaniquem/.nvm/versions/node/v19.2.0/lib/node_modules/yarn/lib/cli.js:310:30)
-      at /Users/ashaniquem/.nvm/versions/node/v19.2.0/lib/node_modules/yarn/lib/cli.js:321:13
+      at step (/Users/prince/.nvm/versions/node/v19.1.0/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /Users/prince/.nvm/versions/node/v19.1.0/lib/node_modules/yarn/lib/cli.js:321:13
 
 npm manifest: 
   {

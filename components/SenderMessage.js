@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+// import { LinearGradient } from 'expo-linear-gradient'
 
 const SenderMessage = ({ message }) => {
   return (
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
         marginLeft: 5,
         marginRight: 5,
-        backgroundColor: "#7C3AED",
+        backgroundColor: "#6427b3",
         borderRadius: 10,
         borderTopRightRadius: 0,
         alignSelf: "flex-end", 

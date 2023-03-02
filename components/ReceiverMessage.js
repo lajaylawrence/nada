@@ -7,7 +7,7 @@ const ReceiverMessage = ({message }) => {
 
         <Image 
           style={styles.image}
-          source={{uri: message.photoURL}}
+          source={{uri: 'https://static.vecteezy.com/system/resources/thumbnails/009/902/706/small_2x/user-approved-icon-3d-render-png.png'}}
         />
         <Text style={styles.text1}> {message.message}</Text>
 
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
       marginBottom: 5,
       marginLeft: 30,
       marginRight: 5,
-        backgroundColor: "#0d6625",
+        backgroundColor: "#f7a202",
         borderRadius: 10,
         borderTopLeftRadius: 0,
         alignSelf: "flex-start", 

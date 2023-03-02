@@ -35,7 +35,7 @@ const ChatRow = ({ matchDetails }) => {
     })}>
         <Image 
            style = {styles.image1}
-           source={{uri: matchedUserInfo?.profilePic}}
+           source={{uri: 'https://static.vecteezy.com/system/resources/thumbnails/009/902/705/small_2x/verified-secure-user-icon-3d-render-png.png'}}
         />
 
         <View >
@@ -92,6 +92,7 @@ fontWeight: "600",
 text2: {
     flexWrap: "wrap",
     paddingRight: 5,
+    opacity: 0.3,
     
 }
 
