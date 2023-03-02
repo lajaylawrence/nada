@@ -11,7 +11,6 @@ import ModalScreen from './screens/ModalScreen';
 import MessageScreen from './screens/MessageScreen';
 import MatchedScreen from './screens/MatchedScreen';
 import MatchedListScreen from './screens/MatchedListScreen';
-import ProfileReveal from './screens/ProfileReveal';
 
 const Stack = createNativeStackNavigator(); 
 

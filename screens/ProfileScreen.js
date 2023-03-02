@@ -6,7 +6,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import { serverTimestamp, setDoc, doc } from 'firebase/firestore'
 import { db } from '../firebase'
 
-const ModalScreen = () => {
+const ProfileScreen = () => {
     const { user } = useAuth();
     const navigation = useNavigation();
     const [bio, setBio] = useState(null);
@@ -15,6 +15,7 @@ const ModalScreen = () => {
     const [pic, setPic] = useState(null);
     
     const incompleteForm = !bio || ! location || !age || !(age > 17);
+
 
     const updateUserProfile = () => {
       setDoc(doc(db, 'users', user.uid), {
@@ -34,15 +35,26 @@ const ModalScreen = () => {
 
   return (
     <View  style={{ alignItems: 'center'}}>
-      <View>
-        <Image style={{height:200, width:"100%", backgroundColor:"transparent", top:-10}} 
-      source={require('../assets/images/nada_logo.png')}
-      resizeMode="contain"
+      <View style={{justifyContent:'space-evenly', flexDirection:'row', backgroundColor: 'red'}}>
+        <Image 
+        style={{
+          borderRadius: 12,
+          marginRight: 14,
+          marginLeft: 3,
+          marginBottom: 3,
+          marginTop: 3,
+          width: 65,
+          height: 65,
+          top: 100
+        }} 
+        source={{uri:user.profilePic}}/>
+        <Image style={{height:200, width:300, backgroundColor:"transparent", top:-10}} 
+        source={require('../assets/images/nada_logo.png')}
+        resizeMode="contain"
       />
       </View>
-      
 
-      <Text style={{top: -70,fontWeight:"700",}}> Welcome { user.displayName }, to the MODAL SCREEN </Text>
+      <Text style={{top: -70,fontWeight:"700",}}> Welcome to your profile.</Text>
 
       <Text style={{textAlign:'center', fontWeight:"700", padding:10, color:'red',}}>
         Biography
@@ -102,13 +114,25 @@ const ModalScreen = () => {
 }
 
 
-
+const styles = StyleSheet.create({
+  image1 : {
+      borderRadius: 12,
+      marginRight: 14,
+      marginLeft: 3,
+      marginBottom: 3,
+      marginTop: 3,
+      width: 65,
+      height: 65,
+      top: 100
+      
+  },
+});
 
 // const styles = StyleSheet.create({
 //   {}
 // })
 
 
-export default ModalScreen
+export default ProfileScreen
 
 
