@@ -30,13 +30,10 @@ const MessageScreen = () => {
         ), [matchDetails, db]);   
         
         // get nadamatch array
-    
         useEffect(() => onSnapshot(doc(db, 'matches', matchDetails.id), snapshot => {
             setNadaMatchRequestArray(snapshot.data().nadaMatchRequest)
         }), [matchDetails, db]);
         
-        console.log(matchDetails.id);
-        // getNadaMatchRequestArray();
 
     const sendMessage = () => {
         addDoc(collection(db, 'matches', matchDetails.id, 'messages'), {
