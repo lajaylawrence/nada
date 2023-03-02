@@ -137,7 +137,7 @@ const HomeScreen = () => {
         </TouchableOpacity>
         
 
-        <TouchableOpacity onPress={() => navigation.navigate('Modal')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Filter')}>
           <Feather name="filter" size={24} color="black" style={styles.image} /> 
          
           </TouchableOpacity>
@@ -244,7 +244,7 @@ const HomeScreen = () => {
             <Ionicons name="ios-chatbox-ellipses-outline"  size={30} />
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigation.navigate('Modal')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
             <Octicons name="person" size={30}/>
           </TouchableOpacity>
       </View>

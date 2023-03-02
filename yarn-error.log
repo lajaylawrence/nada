@@ -1,5 +1,9 @@
 Arguments: 
+<<<<<<< HEAD
   /Users/prince/.nvm/versions/node/v19.1.0/bin/node /Users/prince/.nvm/versions/node/v19.1.0/bin/yarnpkg add expo-linear-gradient@~12.0.1
+=======
+  /Users/ashaniquem/.nvm/versions/node/v19.2.0/bin/node /Users/ashaniquem/.nvm/versions/node/v19.2.0/bin/yarn add react-native-multi-selectbox
+>>>>>>> b36724dc1c72c9f61e68b26bbf27f2d2ab4a841d
 
 PATH: 
   /Users/prince/Desktop/NADA/nada/node_modules/.bin:/Users/prince/Desktop/NADA/nada/node_modules/.bin:/Users/prince/Desktop/NADA/node_modules/.bin:/Users/prince/Desktop/node_modules/.bin:/Users/prince/node_modules/.bin:/Users/node_modules/.bin:/node_modules/.bin:/Users/prince/.nvm/versions/node/v19.1.0/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/Users/prince/.nvm/versions/node/v19.1.0/bin:/Users/prince/.nvm/versions/node/v19.1.0/bin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/prince/.nvm/versions/node/v19.1.0/bin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.9/bin
