@@ -10,18 +10,6 @@ import { collection, doc, DocumentSnapshot, getDoc, getDocs, onSnapshot, query, 
 import { db } from '../firebase'
 import generateMatchID from '../lib/generateMatchID';
 
-//Creating an alert button for testing purposes
-const alert = () => {
-  Alert.alert(
-    'Alert',
-    'Button Works',
-    {
-      cancelable: true,
-    },
-  );
-   
-}
-//End of alert button
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -132,7 +120,7 @@ const HomeScreen = () => {
       {/* Header */}
       <View style={styles.container}>
       
-        <TouchableOpacity onPress={alert} >
+        <TouchableOpacity>
         <Image style={styles.image2} source={require('../assets/images/nada_logo.png')}/>
         </TouchableOpacity>
         
@@ -231,7 +219,7 @@ const HomeScreen = () => {
 
       {/* Navbar */}
       <View style={{alignItems:"center",position:"relative", justifyContent:"space-evenly", backgroundColor:"white", top: 630, height:80, borderRadius:30, flexDirection:"row"}}>
-          <TouchableOpacity onPress={alert}>
+          <TouchableOpacity>
             <AntDesign name="home" size={30} style={{backgroundColor:"white"}}/>
 
           </TouchableOpacity>
