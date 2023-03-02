@@ -11,7 +11,6 @@ import ModalScreen from './screens/ModalScreen';
 import MessageScreen from './screens/MessageScreen';
 import MatchedScreen from './screens/MatchedScreen';
 import MatchedListScreen from './screens/MatchedListScreen';
-import ProfileReveal from './screens/ProfileReveal';
 
 const Stack = createNativeStackNavigator(); 
 
@@ -31,8 +30,9 @@ const StackNavigator = () => {
                         <Stack.Screen name="Message" component={MessageScreen}/>
                         <Stack.Screen name="Profile" component={ProfileScreen} />
                         <Stack.Screen name="MatchedList" component={MatchedListScreen} />
+                    </Stack.Group>
+                    <Stack.Group screenOptions={{presentation: "modal", }}>
                         <Stack.Screen name="Modal" component={ModalScreen} />
-                        <Stack.Screen name="profileReveal" component={ProfileReveal} />
                     </Stack.Group>
                     <Stack.Group screenOptions={{presentation: 'transparentModal'}}>
                         <Stack.Screen name="Matches" component={MatchedScreen} />

@@ -34,12 +34,15 @@ const ModalScreen = () => {
 
   return (
     <View  style={{ alignItems: 'center'}}>
-      <Image style={{height:200, width:"100%", backgroundColor:"transparent", top:-10}} 
+      <View>
+        <Image style={{height:200, width:"100%", backgroundColor:"transparent", top:-10}} 
       source={require('../assets/images/nada_logo.png')}
       resizeMode="contain"
       />
+      </View>
+      
 
-      <Text style={{top: -70,fontWeight:"700",}}> Welcome { user.displayName } </Text>
+      <Text style={{top: -70,fontWeight:"700",}}> Welcome { user.displayName }, to the MODAL SCREEN </Text>
 
       <Text style={{textAlign:'center', fontWeight:"700", padding:10, color:'red',}}>
         Biography
@@ -97,6 +100,9 @@ const ModalScreen = () => {
     </View>
   )
 }
+
+
+
 
 // const styles = StyleSheet.create({
 //   {}
