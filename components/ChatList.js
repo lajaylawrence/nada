@@ -41,7 +41,7 @@ const ChatList = () => {
     />
     ) : (
      <View style={styles.container1}>
-        <Text> No Matches</Text>
+        <Text> No Chats</Text>
     </View>
   )
 }
