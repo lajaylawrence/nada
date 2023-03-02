@@ -138,7 +138,7 @@ const HomeScreen = () => {
         
 
         <TouchableOpacity onPress={() => navigation.navigate('Filter')}>
-          <Feather name="filter" size={24} color="black" style={styles.image} /> 
+          <Feather name="filter" size={24} color="#008c9e"style={styles.image} /> 
          
           </TouchableOpacity>
 
@@ -183,12 +183,13 @@ const HomeScreen = () => {
           },
         }}
         renderCard={ (card) => card ?  (
-          <View key={card.id} style={{ position: "relative", backgroundColor: "transparent", height: 500, borderRadius: 12,}}>
-            <ImageBackground style= {{ flex: 1 }} source={ require("../assets/images/bckgrnd_col1.png") } imageStyle={{ borderRadius: 15 }} />
+          <View key={card.id} style={[styles.cardShadow,{ position: "relative", backgroundColor: "transparent", height: 500, borderRadius: 12,}]}>
+            <ImageBackground style= {[styles.bkimage, { flex: 1 }]} source={ require("../assets/images/bckgrnd_col1.png") } imageStyle={{ borderRadius: 15 }} />
             {/* <Text> This is some text that is to be added for the user bio </Text> */}
             <View style={{position: "absolute", alignContent: "center", alignItems: "center", top: 50}}>
               <View style={{position: "relative", height: 300, alignItems: "center", left:0,flexDirection:'row'}}>
-                <Text style={{flexWrap:'wrap', padding: 10}}> 
+                <Text style={{flexWrap:'wrap', padding: 20, textAlign: 'center', color:"#5000a6", fontWeight:'bold', opacity:0.5, fontStyle: 'italic'}}> 
+                
                   { card.userBio}
                 </Text>
               </View>
@@ -217,35 +218,35 @@ const HomeScreen = () => {
 
       {/* Like and Dislike Buttons */}
       <View style={{position:"relative", justifyContent:'space-evenly', top: 610, flexDirection: "row", alignItems: 'center'}}>
-        <TouchableOpacity onPress={() => swipeRef.current.swipeLeft()} style={{backgroundColor:"red", borderRadius:65, width:60, height:60, alignItems:"center", justifyContent:"center"}}>
+        <TouchableOpacity onPress={() => swipeRef.current.swipeLeft()} style={{backgroundColor:"#ed1e02", borderRadius:65, width:60, height:60, alignItems:"center", justifyContent:"center"}}>
           <Entypo name="cross" size={30} style={{color:"white"}}/>
 
         </TouchableOpacity >
         
 
-        <TouchableOpacity onPress={() => swipeRef.current.swipeRight()} style={{backgroundColor:"#AA3FEC", borderRadius:65, width:60, height:60, alignItems:"center", justifyContent:"center"}}>
+        <TouchableOpacity onPress={() => swipeRef.current.swipeRight()} style={{backgroundColor:"#038c23", borderRadius:65, width:60, height:60, alignItems:"center", justifyContent:"center"}}>
         <AntDesign name="heart" size={22} style={{color:"white"}}/>
         </TouchableOpacity>
       </View>
       {/* End of Like and Dislike Buttons */}
 
       {/* Navbar */}
-      <View style={{alignItems:"center",position:"relative", justifyContent:"space-evenly", backgroundColor:"white", top: 630, height:80, borderRadius:30, flexDirection:"row"}}>
+      <View style={{alignItems:"center",position:"relative", justifyContent:"space-evenly", backgroundColor:"white", top: 630, height:80, borderRadius:80, flexDirection:"row", paddingTop:-15, borderTopWidth: 3, borderColor: "#E5E7EB"}}>
           <TouchableOpacity onPress={alert}>
-            <AntDesign name="home" size={30} style={{backgroundColor:"white"}}/>
+            <AntDesign name="home" size={30} style={{backgroundColor:"white", color:"#3a0173"}}/>
 
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => navigation.navigate('MatchedList')}>
-            <AntDesign name="hearto" size={30} style={{backgroundColor:"white"}} />
+            <AntDesign name="hearto" size={30} style={{backgroundColor:"white", color:"#3a0173"}} />
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => navigation.navigate("Chat")}>
-            <Ionicons name="ios-chatbox-ellipses-outline"  size={30} />
+            <Ionicons name="ios-chatbox-ellipses-outline"  size={30} style={{backgroundColor:"white", color:"#3a0173"}}/>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-            <Octicons name="person" size={30}/>
+            <Octicons name="person" size={30} style={{backgroundColor:"white", color:"#3a0173"}}/>
           </TouchableOpacity>
       </View>
       {/* End of navbar */}
@@ -288,7 +289,18 @@ const HomeScreen = () => {
       marginTop: -6,
     },
     cardShadow: {
+      shadowColor: "#000",
+shadowOffset: { width: 0, height: 3 },
+shadowOpacity: 0.2,
+shadowRadius: 1.41,
+elevation: 2,
 
+    },
+    bkimage: {
+      height: '100%',
+      width: '100%',
+      position: 'absolute',
+      // opacity: 0.5,
     }
   });
 
