@@ -6,9 +6,9 @@ import { useNavigation } from '@react-navigation/core';
 import { collection, onSnapshot, where, query } from 'firebase/firestore';
 import { db } from '../firebase';
 import useAuth from '../hooks/useAuth';
-import ChatRow from './ChatRow';
+import MatchedRow from './MatchedRow';
 
-const ChatList = () => {
+const MatchedList = () => {
     const [matches, setMatches] = useState([]);
     const { user } = useAuth();
 
@@ -36,12 +36,13 @@ const ChatList = () => {
     <FlatList
         style={styles.flatlist1}
         data={matches}
+        horizontal
         keyExtractor={item => item.id}
-        renderItem={({ item }) => <ChatRow matchDetails={item} />}
+        renderItem={({ item }) => <MatchedRow matchDetails={item} />}
     />
     ) : (
      <View style={styles.container1}>
-        <Text> No Chats</Text>
+        <Text> Matches Loading</Text>
     </View>
   )
 }
@@ -52,8 +53,8 @@ const styles = StyleSheet.create({
         display: 'flex',
     },
     flatlist1: {
-        height: "100%",
+        height: "20%",
     }
    
 })
-export default ChatList
+export default MatchedList

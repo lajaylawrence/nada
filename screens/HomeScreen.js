@@ -10,18 +10,6 @@ import { collection, doc, DocumentSnapshot, getDoc, getDocs, onSnapshot, query, 
 import { db } from '../firebase'
 import generateMatchID from '../lib/generateMatchID';
 
-//Creating an alert button for testing purposes
-const alert = () => {
-  Alert.alert(
-    'Alert',
-    'Button Works',
-    {
-      cancelable: true,
-    },
-  );
-   
-}
-//End of alert button
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -132,7 +120,7 @@ const HomeScreen = () => {
       {/* Header */}
       <View style={styles.container}>
       
-        <TouchableOpacity onPress={alert} >
+        <TouchableOpacity>
         <Image style={styles.image2} source={require('../assets/images/nada_logo.png')}/>
         </TouchableOpacity>
         
@@ -231,9 +219,9 @@ const HomeScreen = () => {
       {/* End of Like and Dislike Buttons */}
 
       {/* Navbar */}
-      <View style={{alignItems:"center",position:"relative", justifyContent:"space-evenly", backgroundColor:"white", top: 630, height:80, borderRadius:80, flexDirection:"row", paddingTop:-15, borderTopWidth: 3, borderColor: "#E5E7EB"}}>
+      <View style={{alignItems:"center",position:"relative", justifyContent:"space-evenly", backgroundColor:"white", top: 630, height:80, borderRadius:30, flexDirection:"row"}}>
           <TouchableOpacity onPress={alert}>
-            <AntDesign name="home" size={30} style={{backgroundColor:"white", color:"#3a0173"}}/>
+            <AntDesign name="home" size={30} style={{backgroundColor:"white"}}/>
 
           </TouchableOpacity>
 
@@ -245,8 +233,8 @@ const HomeScreen = () => {
             <Ionicons name="ios-chatbox-ellipses-outline"  size={30} style={{backgroundColor:"white", color:"#3a0173"}}/>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-            <Octicons name="person" size={30} style={{backgroundColor:"white", color:"#3a0173"}}/>
+          <TouchableOpacity onPress={() => navigation.navigate('Modal')}>
+            <Octicons name="person" size={30}/>
           </TouchableOpacity>
       </View>
       {/* End of navbar */}

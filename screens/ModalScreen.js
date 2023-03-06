@@ -7,7 +7,7 @@ import { serverTimestamp, setDoc, doc } from 'firebase/firestore'
 import { db } from '../firebase'
 
 const ModalScreen = () => {
-    const { user } = useAuth();
+    const { user, logout } = useAuth();
     const navigation = useNavigation();
     const [bio, setBio] = useState(null);
     const [location, setLocation] = useState(null);
@@ -34,15 +34,14 @@ const ModalScreen = () => {
 
   return (
     <View  style={{ alignItems: 'center'}}>
-      <View>
+
         <Image style={{height:200, width:"100%", backgroundColor:"transparent", top:-10}} 
       source={require('../assets/images/nada_logo.png')}
       resizeMode="contain"
       />
-      </View>
       
 
-      <Text style={{top: -70,fontWeight:"700",}}> Welcome { user.displayName }, to the MODAL SCREEN </Text>
+      <Text style={{top: -70,fontWeight:"700",}}> Welcome { user.displayName } update your profile </Text>
 
       <Text style={{textAlign:'center', fontWeight:"700", padding:10, color:'red',}}>
         Biography
@@ -94,7 +93,13 @@ const ModalScreen = () => {
       onPress={updateUserProfile}
       >
         <Text style={{ textAlign:'center' }} > Update Profile </Text>
-      </TouchableOpacity> */}
+      </TouchableOpacity>  */}
+
+      <TouchableOpacity style={{ position: 'absolute', bottom: -160, backgroundColor:"#AA3FEC", width:170, height: 50, justifyContent: 'center', borderRadius: 20, }} 
+      onPress={logout}
+      >
+        <Text style={{ textAlign:'center' }} > Logout </Text>
+      </TouchableOpacity>
 
 
     </View>

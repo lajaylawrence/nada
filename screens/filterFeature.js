@@ -70,13 +70,10 @@ const GENDER = [
     id: 'FM',
   },
   {
-    item: 'Both',
-    id: 'BT',
+    item: 'Non Binary',
+    id: 'NB',
   },
-  {
-    item: 'No Prefrence',
-    id: 'NP'
-  }
+ 
 ]
 
 const PREF = [
@@ -95,6 +92,10 @@ const PREF = [
   {
     item: 'Pansexual',
     id: 'PS'
+  },
+  {
+    item: 'Sapiosexual',
+    id: 'SP'
   }
 ]
 
@@ -177,7 +178,7 @@ const ProfileScreen = () => {
         isMulti
         />
         <View style={{flex: 1}}>
-        <TouchableOpacity style={{ position: 'absolute', bottom: -100, backgroundColor:"#AA3FEC", width:170, height: 50, justifyContent: 'center', borderRadius: 20 }} 
+        <TouchableOpacity style={{ position: 'absolute', bottom: -100, backgroundColor:"#AA3FEC", width:170, height: 50, justifyContent: 'center', borderRadius: 20, alignSelf: 'center' }} 
       >
         <Text style={{ textAlign:'center' }} > Apply Filter </Text>
       </TouchableOpacity>
