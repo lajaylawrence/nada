@@ -23,12 +23,12 @@ const ProfileReveal = () => {
 
   const matchObject = getMatchedUserInfo(matchDetails?.users, user.uid);
 
-  console.log(matchObject.age);
+  // console.log(matchObject.age);
 
   return (
     <View>
        
-        {nadaMatchRequestArray?.length<2 &&  (
+        {nadaMatchRequestArray?.length != 2 &&  (
         <View>
           <Text style={styles.unMatchedMessage}> OH NO! </Text>
           <Text style={styles.unMatchedMessage2}> It seems you guys haven't Supermatched yet</Text>

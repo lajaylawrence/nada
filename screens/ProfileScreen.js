@@ -101,12 +101,12 @@ const ProfileScreen = () => {
     placeholder='Add a link for your profile picture.'
     />
 
-      <TouchableOpacity style={{ position: 'absolute', bottom: -100, backgroundColor:"#AA3FEC", width:170, height: 50, justifyContent: 'center', borderRadius: 20, }} 
+      {/* <TouchableOpacity style={{ position: 'absolute', bottom: -100, backgroundColor:"#AA3FEC", width:170, height: 50, justifyContent: 'center', borderRadius: 20, }} 
       disabled={incompleteForm}
       onPress={updateUserProfile}
       >
         <Text style={{ textAlign:'center' }} > Update Profile </Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
 
     </View>

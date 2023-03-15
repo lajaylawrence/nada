@@ -59,7 +59,7 @@ const MessageScreen = () => {
             })
     };
 
-console.log();
+// console.log();
 
     return (
       <SafeAreaView style={styles.safearea}>
