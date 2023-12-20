@@ -12,7 +12,7 @@ Having seen and heard about persons experience on different websites, we wanted 
 
 Instead we want you to get to know the person first, and make decisions not based solely on a portrayal of who they are, based on an image.
 
-The contributors to this project are Ashanique Moore and Dachanelle Anderson.
+The contributors to this project are Lajay Lawrence, Ashanique Moore and Dachanelle Anderson.
 
 </details>
 
